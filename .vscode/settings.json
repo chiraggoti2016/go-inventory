@@ -1,0 +1,7 @@
+{
+    
+  "scss-to-css-compile.outDir": "./../css",
+  "files.associations": {
+    "*.jsx": "javascriptreact"
+  }
+}
