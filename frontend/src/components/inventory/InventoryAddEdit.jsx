@@ -1,4 +1,4 @@
-import { Card, Col, Row, Button, Form } from 'react-bootstrap';
+import { Card, Col, Row, Button, Form, Container } from 'react-bootstrap';
 // import Form from 'react-bootstrap/Form';
 import * as formik from 'formik';
 // import { Formik, Form as FormikForm, Field as Form.Control } from 'formik';
@@ -77,143 +77,153 @@ const InventoryAddEdit = () => {
     setEditingItem(null);
     navigate('/');
   };
-  console.log('id', id);
+
   return (
-    <Card className="mb-6">
-      <Card.Header>{editingItem ? 'Edit Item' : 'Add New Item'}</Card.Header>
-      <Card.Body>
-        {editingItem || id === undefined ? (
-          <Formik
-            innerRef={formikRef}
-            validationSchema={schema}
-            onSubmit={FormikOnSubmit}
-            initialValues={editingItem}
-            enableReinitialize
-          >
-            {({
-              isSubmitting,
-              handleSubmit,
-              resetForm,
-              handleChange,
-              values,
-              touched,
-              errors,
-            }) => (
-              <Form onSubmit={handleSubmit} noValidate className="space-y-4">
-                <Row className="mb-3">
-                  <Form.Group as={Col} md="4" controlId="validationFormikName">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="name"
-                      value={values.name}
-                      onChange={handleChange}
-                      isValid={touched.name && !errors.name}
-                    />
-
-                    <Form.Control.Feedback type="invalid">
-                      {errors.name}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Col}
-                    md="4"
-                    controlId="validationFormikDescription"
-                  >
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="description"
-                      value={values.description}
-                      onChange={handleChange}
-                      isValid={touched.description && !errors.description}
-                    />
-
-                    <Form.Control.Feedback type="invalid">
-                      {errors.description}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Col}
-                    md="4"
-                    controlId="validationFormikQuantity"
-                  >
-                    <Form.Label>Quantity</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="quantity"
-                      value={values.quantity}
-                      onChange={handleChange}
-                      isValid={touched.quantity && !errors.quantity}
-                    />
-
-                    <Form.Control.Feedback type="invalid">
-                      {errors.quantity}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-
-                  <Form.Group as={Col} md="4" controlId="validationFormikPrice">
-                    <Form.Label>Price</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="price"
-                      value={values.price}
-                      onChange={handleChange}
-                      isValid={touched.price && !errors.price}
-                    />
-
-                    <Form.Control.Feedback type="invalid">
-                      {errors.price}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Col}
-                    md="4"
-                    controlId="validationFormikCategory"
-                  >
-                    <Form.Label>Category</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="category"
-                      value={values.category}
-                      onChange={handleChange}
-                      isValid={touched.category && !errors.category}
-                    />
-
-                    <Form.Control.Feedback type="invalid">
-                      {errors.category}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-
-                <Form.Group className="mb-3">
-                  <Button type="submit" disabled={isSubmitting}>
-                    {editingItem ? 'Update' : 'Add'} Item
-                  </Button>
-                  {editingItem && (
-                    <Button
-                      variant="outline"
-                      onClick={() => {
-                        handleCancel();
-                        resetForm();
-                      }}
-                      className="ml-2"
+    <Container>
+      <Card className="mb-6">
+        <Card.Header>{editingItem ? 'Edit Item' : 'Add New Item'}</Card.Header>
+        <Card.Body>
+          {editingItem || id === undefined ? (
+            <Formik
+              innerRef={formikRef}
+              validationSchema={schema}
+              onSubmit={FormikOnSubmit}
+              initialValues={editingItem}
+              enableReinitialize
+            >
+              {({
+                isSubmitting,
+                handleSubmit,
+                resetForm,
+                handleChange,
+                values,
+                touched,
+                errors,
+              }) => (
+                <Form onSubmit={handleSubmit} noValidate className="space-y-4">
+                  <Row className="mb-3">
+                    <Form.Group
+                      as={Col}
+                      md="4"
+                      controlId="validationFormikName"
                     >
-                      Cancel
+                      <Form.Label>Name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="name"
+                        value={values.name}
+                        onChange={handleChange}
+                        isValid={touched.name && !errors.name}
+                      />
+
+                      <Form.Control.Feedback type="invalid">
+                        {errors.name}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group
+                      as={Col}
+                      md="4"
+                      controlId="validationFormikDescription"
+                    >
+                      <Form.Label>Description</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="description"
+                        value={values.description}
+                        onChange={handleChange}
+                        isValid={touched.description && !errors.description}
+                      />
+
+                      <Form.Control.Feedback type="invalid">
+                        {errors.description}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group
+                      as={Col}
+                      md="4"
+                      controlId="validationFormikQuantity"
+                    >
+                      <Form.Label>Quantity</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="quantity"
+                        value={values.quantity}
+                        onChange={handleChange}
+                        isValid={touched.quantity && !errors.quantity}
+                      />
+
+                      <Form.Control.Feedback type="invalid">
+                        {errors.quantity}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group
+                      as={Col}
+                      md="4"
+                      controlId="validationFormikPrice"
+                    >
+                      <Form.Label>Price</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="price"
+                        value={values.price}
+                        onChange={handleChange}
+                        isValid={touched.price && !errors.price}
+                      />
+
+                      <Form.Control.Feedback type="invalid">
+                        {errors.price}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group
+                      as={Col}
+                      md="4"
+                      controlId="validationFormikCategory"
+                    >
+                      <Form.Label>Category</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="category"
+                        value={values.category}
+                        onChange={handleChange}
+                        isValid={touched.category && !errors.category}
+                      />
+
+                      <Form.Control.Feedback type="invalid">
+                        {errors.category}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Row>
+
+                  <Form.Group className="mb-3">
+                    <Button type="submit" disabled={isSubmitting}>
+                      {editingItem ? 'Update' : 'Add'} Item
                     </Button>
-                  )}
-                </Form.Group>
-              </Form>
-            )}
-          </Formik>
-        ) : (
-          <>...Loading</>
-        )}
-      </Card.Body>
-    </Card>
+                    {editingItem && (
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          handleCancel();
+                          resetForm();
+                        }}
+                        className="ml-2"
+                      >
+                        Cancel
+                      </Button>
+                    )}
+                  </Form.Group>
+                </Form>
+              )}
+            </Formik>
+          ) : (
+            <>...Loading</>
+          )}
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 InventoryAddEdit.displayName = 'InventoryAddEdit';
